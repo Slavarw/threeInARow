@@ -4,39 +4,45 @@ public class Field {
 
     private final Cell[][] field;
 
-    public Field(int x, int y) {
-        this.field = new Cell[x][y];
+    public Field(int x, int j) {
+        this.field = new Cell[x][j];
 
         for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                field[i][j] = new Cell();
+            for (int y = 0; y < j; y++) {
+                field[i][y] = new Cell();
             }
         }
 
 
         //установить соседа у каждой ячейки вызвать  setNeighbour
         for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
+            for (int y = 0; y < field[0].length; y++) {
                 if (i == 0) {
-                    if (j == 0) {
-                        field[i][j].setNeighbour(null, field[1][0], field[0][1], null); }
-                    else if (j < field[i].length - 1) {
-                        field[i][j].setNeighbour(null, field[1][j], field[1][j+1], field[1][j-1] ); }
-                    else if (j == field[i].length - 1) {
-                        field[i][j].setNeighbour(null, field[1][j], null, field[0][j-1] ); }
-                } else if (i == field.length-1) {
-                    if (j == 0) {
-                        field[i][j].setNeighbour(field[i-1][j], null, field[i][1], null);}
-                    else if (j < field[i].length) {
-                        field[i][j].setNeighbour(field[i-1][j], null, field[i][j+1], field[i][j-1]);}
-                    else if (j == field[i].length) {
-                        field[i][j].setNeighbour(field[i-1][j], null, null, field[i][j-1]);}
+                    if (y == 0) {
+                        field[i][y].setNeighbour(null, field[0][1], field[1][0], null);
+                    }
+                    else if (y < field[0].length - 1) {
+                        field[i][y].setNeighbour(field[0][y -1], field[0][y + 1], field[1][y], null);
+                    }
+                    else if (y == field[0].length - 1) {
+                        field[i][y].setNeighbour(field[0][y - 1], null, field[1][y] , null);
+                    }
+                } else if (i == field.length - 1) {
+                    if (y == 0) {
+                        field[i][y].setNeighbour(null, field[i][y + 1], null, field[i - 1][y]);
+                    }
+                    else if (y < field[0].length - 1) {
+                        field[i][y].setNeighbour(field[i][y - 1], field[i][y + 1], null, field[i - 1][y]);
+                    }
+                    else if (y == field[0].length - 1) {
+                        field[i][y].setNeighbour(field[i][y - 1], null, null, field[i - 1][y]);
+                    }
                 } else if (y == 0) {
-                    field[i][j].setNeighbour(field[i-1][j], field[i+1][j], field[i][j+1], null); }
-                else if (y == field[i].length-1) {
-                    field[i][j].setNeighbour(field[i-1][j], field[i+1][j], null, field[i][j-1]);}
-                else {
-                    field[i][j].setNeighbour(field[i-1][j], field[i+1][j], field[i][j+1], field[i][j-1]);}
+                    field[i][y].setNeighbour(null, field[i][y + 1], field[i + 1][y], field[i - 1][y]);
+                } else if (y == field[0].length - 1) {
+                    field[i][y].setNeighbour(field[i][y - 1], null, field[i + 1][y], field[i - 1][y]);
+                } else {
+                    field[i][y].setNeighbour(field[i][y - 1], field[i][y + 1], field[i + 1][y], field[i - 1][y]);}
             }
         }
     }

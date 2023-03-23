@@ -3,8 +3,9 @@ package game;
 import game.rhombus.Rhombus;
 
 import javax.swing.*;
+import java.awt.*;
 
-public class Cell extends JComponent {
+public class Cell extends JPanel {
 
     private Rhombus rhombus;
     private boolean isFill;

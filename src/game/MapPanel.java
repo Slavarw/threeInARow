@@ -7,25 +7,28 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MapPanel extends JComponent {
+public class MapPanel extends JPanel {
 
     private final Field field;
     private Cell[][] cells;
 
     public MapPanel(Field field) {
         this.field = field;
+        cells = field.getField();
 
-        GridLayout gridLayout = new GridLayout(cells.length, cells[0].length);
+        setBackground(Color.BLACK);
+        GridLayout gridLayout = new GridLayout(cells.length, cells[0].length, 3, 3);
         setLayout(gridLayout);
 
         for (int i = 0; i < cells.length; i++) {
             for (int y = 0; y < cells[0].length; y++) {
-                if (cells[i][y].getRhombus().getColorRhombus() == ColorRhombus.RED)
+                if (cells[i][y].getRhombus().getColorRhombus() == ColorRhombus.RED) {
                     cells[i][y].setBackground(Color.RED);
-                else if (cells[i][y].getRhombus().getColorRhombus() == ColorRhombus.GREEN)
+                } else if (cells[i][y].getRhombus().getColorRhombus() == ColorRhombus.GREEN) {
                     cells[i][y].setBackground(Color.GREEN);
-                else if (cells[i][y].getRhombus().getColorRhombus() == ColorRhombus.BLUE)
+                } else if (cells[i][y].getRhombus().getColorRhombus() == ColorRhombus.BLUE) {
                     cells[i][y].setBackground(Color.BLUE);
+                }
                 add(cells[i][y]);
             }
         }
@@ -33,16 +36,17 @@ public class MapPanel extends JComponent {
         addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) { //только клик
-                //System.out.println(e.getX() + " " + e.getY());
+
             }
 
             @Override
             public void mousePressed(MouseEvent e) { //каждое нажатие
-                //System.out.println(e.getX() / 5 + " " + e.getY() / 5);
+                System.out.println("Нажали: " + e.getX() + " " + e.getY());
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {   //каждое отжатие
+                System.out.println("Отжали: " + e.getX() + " " + e.getY());
             }
 
             @Override

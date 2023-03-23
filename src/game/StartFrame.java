@@ -11,7 +11,6 @@ public class StartFrame extends JFrame {
     public static final int DEFAULT_HEIGHT = 400;
 
     public StartFrame() {
-        Game game = new Game(new Field(10, 10));
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setResizable(false);
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -28,6 +27,7 @@ public class StartFrame extends JFrame {
         newGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Game game = new Game(new Field(10, 10));
                 GameFrame gameFrame = new GameFrame(game);
                 gameFrame.setVisible(true);
             }
