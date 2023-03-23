@@ -2,7 +2,9 @@ package game;
 
 import game.rhombus.Rhombus;
 
-public class Cell {
+import javax.swing.*;
+
+public class Cell extends JComponent {
 
     private Rhombus rhombus;
     private boolean isFill;
@@ -21,7 +23,6 @@ public class Cell {
         isFill = false;
     }
 
-
     public Rhombus getRhombus() {
         return rhombus;
     }
@@ -35,5 +36,18 @@ public class Cell {
         this.downCell = downCell;
         this.rightCell = rightCell;
         this.leftCell = leftCell;
+    }
+
+    /**
+     * Метод пытается передвинуть ячейку по указанному направлению
+     * 0 - вверх
+     * 1 - вниз
+     * 2 - вправо
+     * 3 - влево
+     * @param d
+     * @return
+     */
+    public boolean go(byte d) {
+        return false;
     }
 }

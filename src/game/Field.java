@@ -54,5 +54,7 @@ public class Field {
         return false;
     }
 
-
+    public Cell[][] getField() {
+        return field;
+    }
 }

@@ -14,4 +14,8 @@ public class Rhombus {
     private ColorRhombus getRhombus() {
         return null;
     }
+
+    public ColorRhombus getColorRhombus() {
+        return colorRhombus;
+    }
 }
