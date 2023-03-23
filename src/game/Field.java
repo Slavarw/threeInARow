@@ -8,7 +8,7 @@ public class Field {
         this.field = new Cell[x][y];
 
         //инициализация
-        for (;;) {
+        /*for (;;) {
             for (;;) {
 
             }
@@ -20,7 +20,7 @@ public class Field {
             for (;;) {
 
             }
-        }
+        }*/
     }
 
     /**
