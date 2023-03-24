@@ -31,18 +31,7 @@ public class Cell extends JPanel {
         this.leftCell = leftCell;
     }
 
-    /**
-     * Метод пытается передвинуть ячейку по указанному направлению
-     * 0 - вверх
-     * 1 - вниз
-     * 2 - вправо
-     * 3 - влево
-     * @param d
-     * @return
-     */
-    public boolean go(byte d) {
-        return false;
-    }
+
 
     public Rhombus getRhombus() {
         return rhombus;
@@ -50,6 +39,10 @@ public class Cell extends JPanel {
 
     public void setRhombus(Rhombus rhombus) {
         this.rhombus = rhombus;
+    }
+
+    public boolean isFill() {
+        return isFill;
     }
 
     public Cell getUpCell() {
