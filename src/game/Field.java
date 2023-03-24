@@ -2,6 +2,7 @@ package game;
 
 import game.rhombus.ColorRhombus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Field {
@@ -16,7 +17,6 @@ public class Field {
                 field[i][y] = new Cell();
             }
         }
-
 
         //установить соседа у каждой ячейки вызвать  setNeighbour
         for (int i = 0; i < field.length; i++) {
@@ -52,10 +52,31 @@ public class Field {
     }
 
     /**
+     * Метод возвращает false если ход невозможен и тру если все ок
+     * @param cell
+     * @param direction
+     * @return
+     */
+    public boolean action(Cell cell, String direction) {
+        System.out.println("Взяли ячейку и сказали ей двигаться " + direction);
+        return false;
+    }
+
+    /**
      * Метод проверяет есть ли на поле 3 в ряд
      */
-    public void hasThreeInARow() {
-
+    private void hasThreeInARow() {
+        for (int i = 0; i < field.length; i++) {
+            for (int y = 0; y < field[0].length; y++) {
+                Cell cell = field[i][y];
+                List<Cell> cells = new ArrayList<>();
+                cells.add(cell);
+                getAllNeighbourWhoHasSameColor(cells, cell);
+                if (cells.size() > 3) {
+                    downing(cells);
+                }
+            }
+        }
     }
 
     /**
@@ -67,25 +88,13 @@ public class Field {
     private void getAllNeighbourWhoHasSameColor(List<Cell> cells, Cell cell) {
         ColorRhombus colorRhombus = cell.getRhombus().getColorRhombus();
 
-        Cell checkCell = cell.getUpCell();
-        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
-            if (!thisListHasThisCell(cells, checkCell))
-                getAllNeighbourWhoHasSameColor(cells, checkCell);
-        }
+        checkCell(colorRhombus, cells, cell.getUpCell());
+        checkCell(colorRhombus, cells, cell.getDownCell());
+        checkCell(colorRhombus, cells, cell.getRightCell());
+        checkCell(colorRhombus, cells, cell.getLeftCell());
+    }
 
-        checkCell = cell.getDownCell();
-        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
-            if (!thisListHasThisCell(cells, checkCell))
-                getAllNeighbourWhoHasSameColor(cells, checkCell);
-        }
-
-        checkCell = cell.getRightCell();
-        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
-            if (!thisListHasThisCell(cells, checkCell))
-                getAllNeighbourWhoHasSameColor(cells, checkCell);
-        }
-
-        checkCell = cell.getLeftCell();
+    private void checkCell(ColorRhombus colorRhombus, List<Cell> cells, Cell checkCell) {
         if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
             if (!thisListHasThisCell(cells, checkCell))
                 getAllNeighbourWhoHasSameColor(cells, checkCell);
@@ -104,7 +113,7 @@ public class Field {
      * метод принимает массив ячеек и у всех вызывает метод disappear класса Cell
      * @param cells
      */
-    private void downing(Cell[] cells) {
+    private void downing(List<Cell> cells) {
 
 
 
