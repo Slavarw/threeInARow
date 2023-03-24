@@ -1,5 +1,7 @@
 package game;
 
+import java.util.List;
+
 public class Field {
 
     private final Cell[][] field;
@@ -55,6 +57,16 @@ public class Field {
     }
 
     /**
+     * Рекурсивный метод проверки всех соседей на нужный цвет
+     * @param cells массив подходящих ячеек
+     * @param cell ячейка которую надо проверить
+     * @return массив ячеек после оброботки ячейки
+     */
+    public List<Cell> getAllNeighbourWhoHasSameColor(List<Cell> cells, Cell cell) {
+        return null;
+    }
+
+    /**
      * метод принимает массив ячеек и у всех вызывает метод disappear класса Cell
      * @param cells
      */
@@ -67,7 +79,6 @@ public class Field {
         //createNewRhombus(); добавление новых ромбусов
     }
 
-
     /**
      * проверяет соседей снизу у каждой ячейки и если есть пустая ячейка то передвегаем нашу вниз на место соседа
      */
@@ -75,6 +86,16 @@ public class Field {
 
         //когда пройдет по всему полю и никто не упадет то возвращает true
 
+        return false;
+    }
+
+    /**
+     * Метод передвегает ячейки
+     * @param cellWhoMove ячейка которая двигается
+     * @param cellWhereMove ячейка куда двигается
+     * @return получилось подвинуться
+     */
+    private boolean move(Cell cellWhoMove, Cell cellWhereMove) {
         return false;
     }
 

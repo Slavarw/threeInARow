@@ -24,14 +24,6 @@ public class Cell extends JPanel {
         isFill = false;
     }
 
-    public Rhombus getRhombus() {
-        return rhombus;
-    }
-
-    public void setRhombus(Rhombus rhombus) {
-        this.rhombus = rhombus;
-    }
-
     public void setNeighbour(Cell upCell, Cell downCell, Cell rightCell, Cell leftCell) {
         this.upCell = upCell;
         this.downCell = downCell;
@@ -50,5 +42,29 @@ public class Cell extends JPanel {
      */
     public boolean go(byte d) {
         return false;
+    }
+
+    public Rhombus getRhombus() {
+        return rhombus;
+    }
+
+    public void setRhombus(Rhombus rhombus) {
+        this.rhombus = rhombus;
+    }
+
+    public Cell getUpCell() {
+        return upCell;
+    }
+
+    public Cell getDownCell() {
+        return downCell;
+    }
+
+    public Cell getRightCell() {
+        return rightCell;
+    }
+
+    public Cell getLeftCell() {
+        return leftCell;
     }
 }
