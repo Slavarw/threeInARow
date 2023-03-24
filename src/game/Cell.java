@@ -39,6 +39,10 @@ public class Cell extends JPanel {
         this.rhombus = rhombus;
     }
 
+    public boolean isFill() {
+        return isFill;
+    }
+
     public Cell getUpCell() {
         return upCell;
     }

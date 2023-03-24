@@ -117,10 +117,19 @@ public class Field {
      * проверяет соседей снизу у каждой ячейки и если есть пустая ячейка то передвегаем нашу вниз на место соседа
      */
     private boolean drop() {
-
-        //когда пройдет по всему полю и никто не упадет то возвращает true
-
-        return false;
+        boolean isAnyMove = false;
+        for (int i = 0; i < field.length; i++) {
+            for (int y = 0; y < field[0].length; y++) {
+                Cell cell = field[i][y];
+                Cell downCell = cell.getDownCell();
+                if (downCell != null && !downCell.isFill()) {
+                    if(move(cell, downCell) && !isAnyMove){
+                        isAnyMove = true;
+                    }
+                }
+            }
+        }
+        return isAnyMove;
     }
 
     /**
