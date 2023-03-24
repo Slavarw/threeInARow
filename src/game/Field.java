@@ -1,5 +1,7 @@
 package game;
 
+import game.rhombus.ColorRhombus;
+
 import java.util.List;
 
 public class Field {
@@ -62,8 +64,40 @@ public class Field {
      * @param cell ячейка которую надо проверить
      * @return массив ячеек после оброботки ячейки
      */
-    public List<Cell> getAllNeighbourWhoHasSameColor(List<Cell> cells, Cell cell) {
-        return null;
+    private void getAllNeighbourWhoHasSameColor(List<Cell> cells, Cell cell) {
+        ColorRhombus colorRhombus = cell.getRhombus().getColorRhombus();
+
+        Cell checkCell = cell.getUpCell();
+        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
+            if (!thisListHasThisCell(cells, checkCell))
+                getAllNeighbourWhoHasSameColor(cells, checkCell);
+        }
+
+        checkCell = cell.getDownCell();
+        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
+            if (!thisListHasThisCell(cells, checkCell))
+                getAllNeighbourWhoHasSameColor(cells, checkCell);
+        }
+
+        checkCell = cell.getRightCell();
+        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
+            if (!thisListHasThisCell(cells, checkCell))
+                getAllNeighbourWhoHasSameColor(cells, checkCell);
+        }
+
+        checkCell = cell.getLeftCell();
+        if (checkCell != null && colorRhombus == checkCell.getRhombus().getColorRhombus()) {
+            if (!thisListHasThisCell(cells, checkCell))
+                getAllNeighbourWhoHasSameColor(cells, checkCell);
+        }
+    }
+
+    private boolean thisListHasThisCell(List<Cell> cells, Cell cell) {
+        for (Cell c : cells) {
+            if (c == cell)
+                return true;
+        }
+        return false;
     }
 
     /**

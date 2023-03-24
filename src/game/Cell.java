@@ -31,8 +31,6 @@ public class Cell extends JPanel {
         this.leftCell = leftCell;
     }
 
-
-
     public Rhombus getRhombus() {
         return rhombus;
     }
